@@ -92,3 +92,7 @@ See: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/re
 
 Copy the usage example and paste it into a new file at infra/Kubernetes.tf.
 
+### Application Health Checks - liveness_probe
+
+At `kubernetes.tf` file, adjust as needed the liveness_probe.
+

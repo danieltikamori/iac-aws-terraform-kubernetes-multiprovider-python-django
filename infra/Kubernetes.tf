@@ -40,17 +40,17 @@ resource "kubernetes_deployment" "Django-API" {
 
           liveness_probe {
             http_get {
-              path = "/"
-              port = 80
+              path = "/clientes/" # Path that must be accessed to be considered healthy
+              port = 8000 # Port obviously must be open
 
-              http_header {
+              http_header { # (optional) Custom headers can be added here if needed
                 name  = "X-Custom-Header"
                 value = "Awesome"
               }
             }
 
-            initial_delay_seconds = 3
-            period_seconds        = 3
+            initial_delay_seconds = 3 # Delay before being considered healthy for the first time. If the application take much time to deploy, adjust as needed to avoid false positives.
+            period_seconds        = 6 # (3) Time between probes (frequency). Adjust as needed. Not much low, neither to high. 3 failures in a row would be considered unhealthy.
           }
         }
       }
