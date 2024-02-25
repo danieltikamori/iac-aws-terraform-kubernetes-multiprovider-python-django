@@ -57,3 +57,32 @@ Open the terminal, at the desired environment directory (env/dev), run the follo
 terraform init
 terraform apply
 ```
+
+Check the deployment at AWS console, EKS.
+
+If successful, we now can focus on the application.
+
+## 2 providers
+
+See: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs
+
+The example code uses a local path and local context.
+
+For further reading, see these examples which demonstrate different approaches to keeping the cluster credentials up to date:
+
+Azure AKS: https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/_examples/aks/README.md
+
+Amazon EKS: https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/_examples/eks/README.md
+
+Google GKE: https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/_examples/gke/README.md
+
+Open the link of the preferred provider and follow the instructions.
+
+We will use EKS in this project.
+
+At the repository, open kubernetes-config directory and then, main.tf file. Copy the code. Paste it in to `Providers.tf`.
+
+Then, see this link to learn the usage: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster_auth
+
+"data" is a service that retrieves data from external sources. In our case, we are retrieving the credentials for the EKS cluster.
+
