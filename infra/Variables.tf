@@ -1,11 +1,15 @@
-variable "nome_repositorio" {
+variable "repo_name" {
   type = string
 }
 
-variable "cargoIAM" {
-  type = string
-}
+# variable "IAMRole" {
+#   type = string
+# }
 
-variable "ambiante" {
+# variable "environment" {
+#   type = string
+# }
+
+variable "cluster_name" {
   type = string
 }

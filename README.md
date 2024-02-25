@@ -26,3 +26,34 @@ Create a project directory and infra/, env/ and environment directories inside t
 
 We had previously created another IaC project, so we will just copy some code.
 
+## VPC
+
+Create a `vpc.tf` file in the infra/ directory.
+
+Configure as the example provided.
+
+## Security groups
+
+Create a `security_groups.tf` file in the infra/ directory.
+
+Configure in a way to allow SSH access to the EKS cluster.
+
+## EKS
+
+Create `eks.tf` file in the infra/ directory.
+
+Use terraform modules.
+See: https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest
+
+
+Configure EKS through the `eks.tf` module.
+
+
+## Deploy the cluster for testing purposes
+
+Open the terminal, at the desired environment directory (env/dev), run the following command:
+
+```bash
+terraform init
+terraform apply
+```

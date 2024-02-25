@@ -1,9 +1,10 @@
 module "prod" {
     source = "../../infra"
 
-    nome_repositorio = "producao"
-    cargoIAM = "producao"
-    ambiante = "producao"
+    repo_name = "production"
+    # IAMRole = "production"
+    # environment = "production"
+    cluster_name = "production"
 }
 
 output "IP_alb" {
