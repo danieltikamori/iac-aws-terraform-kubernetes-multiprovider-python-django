@@ -96,3 +96,26 @@ Copy the usage example and paste it into a new file at infra/Kubernetes.tf.
 
 At `kubernetes.tf` file, adjust as needed the liveness_probe.
 
+### Testing the kubernetes
+
+Push the image to ECR and run `terraform init` again in the desired environment.
+
+Then run `terraform apply`.
+
+Check the deployment at AWS console, EKS.
+Go to the cluster, Workloads and check the pods. The namespace shows what is the default application.
+
+## Load balancer
+
+Not implemented through AWS ELB.
+Instead, we are using an Ingress Controller.
+
+<!-- See: https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/ -->
+
+See: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service#example-using-aws-load-balancer
+
+Ideally implemented at `service.tf` file. It is a Kubernetes service.
+
+In our example, we will use the same `kubernetes.tf` file.
+
+

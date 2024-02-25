@@ -57,3 +57,45 @@ resource "kubernetes_deployment" "Django-API" {
     }
   }
 }
+
+resource "kubernetes_service" "LoadBalancer" {
+  metadata {
+    name = "loadbalancer-django-api"
+  }
+  spec {
+    port {
+      port        = 8000 # machine port
+      target_port = 8000 # container port
+    }
+  
+  selector = { # Useful when you have multiple pods with the same label.(Optional) Route service traffic to pods with label keys and values matching this selector. Only applies to types ClusterIP, NodePort, and LoadBalancer. For more info see Kubernetes reference documentation https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
+    name = "django"
+    # app = kubernetes_pod.example.metadata.0.labels.app
+    }
+
+    session_affinity = "ClientIP" # (Optional) Type of session affinity to use. Valid values are 'None' and 'ClientIP'. Defaults to 'None' if not specified. User will use the same container if enabled. There's a timeout of about 3 hours.
+    type = "LoadBalancer"
+  }
+}
+
+# Create a local variable for the load balancer name.
+locals {
+  lb_name = split("-", split(".", kubernetes_service.example.status.0.load_balancer.0.ingress.0.hostname).0).0
+}
+
+# Read information about the load balancer using the AWS provider.
+data "aws_elb" "example" {
+  name = local.lb_name
+}
+
+output "load_balancer_name" {
+  value = local.lb_name
+}
+
+output "load_balancer_hostname" {
+  value = kubernetes_service.example.status.0.load_balancer.0.ingress.0.hostname
+}
+
+output "load_balancer_info" {
+  value = data.aws_elb.example
+}
