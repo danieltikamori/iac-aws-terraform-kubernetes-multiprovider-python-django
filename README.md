@@ -86,3 +86,9 @@ Then, see this link to learn the usage: https://registry.terraform.io/providers/
 
 "data" is a service that retrieves data from external sources. In our case, we are retrieving the credentials for the EKS cluster.
 
+## Preparing the Application
+
+See: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
+
+Copy the usage example and paste it into a new file at infra/Kubernetes.tf.
+
