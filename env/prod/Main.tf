@@ -7,6 +7,6 @@ module "prod" {
     cluster_name = "production"
 }
 
-output "IP_alb" {
-  value = module.prod.IP
+output "load_balancer_dns" {
+  value = module.prod.URLs # from kubernetes.tf
 }

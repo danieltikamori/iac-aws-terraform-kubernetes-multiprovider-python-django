@@ -118,4 +118,14 @@ Ideally implemented at `service.tf` file. It is a Kubernetes service.
 
 In our example, we will use the same `kubernetes.tf` file.
 
+## Testing the project
 
+Test running `terraform apply`.
+
+Check the deployment at AWS console, EC2, Load balancers. Open at the browser the dns name.
+
+To make it faster to check, let's use data source.
+
+See: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service#attributes-4
+
+Use the output URL with the port.
